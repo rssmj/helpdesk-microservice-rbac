@@ -6,9 +6,9 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('api up: auth-service');
+  res.send('api up: notification-service');
 });
 
 app.listen(port, () => {
-  console.log(`auth-service running on port ${port}`);
+  console.log(`notification-service running on port ${port}`);
 });
