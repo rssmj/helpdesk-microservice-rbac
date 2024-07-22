@@ -1,66 +1,21 @@
-version: '3'
 services:
   auth-service:
-    build:
-      context: ./auth-service
-    environment:
-      NODE_ENV: production
+    build: ./auth-service
     ports:
-      - 3001:3000
-
+      - "3001:3000"
   ticket-service:
-    build:
-      context: ./ticket-service
-    environment:
-      NODE_ENV: production
+    build: ./ticket-service
     ports:
-      - 3002:3000
-
+      - "3002:3000"
   user-service:
-    build:
-      context: ./user-service
-    environment:
-      NODE_ENV: production
+    build: ./user-service
     ports:
-      - 3003:3000
-
+      - "3003:3000"
   notification-service:
-    build:
-      context: ./notification-service
-    environment:
-      NODE_ENV: production
+    build: ./notification-service
     ports:
-      - 3004:3000
-
+      - "3004:3000"
   reporting-service:
-    build:
-      context: ./reporting-service
-    environment:
-      NODE_ENV: production
+    build: ./reporting-service
     ports:
-      - 3005:3000
-
-# Pending: configure for PostgreSQL or alternate database
-#  db:
-#    image: postgres
-#    restart: always
-#    user: postgres
-#    secrets:
-#      - db-password
-#    volumes:
-#      - db-data:/var/lib/postgresql/data
-#    environment:
-#      - POSTGRES_DB=example
-#      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-#    expose:
-#      - 5432
-#    healthcheck:
-#      test: [ "CMD", "pg_isready" ]
-#      interval: 10s
-#      timeout: 5s
-#      retries: 5
-#volumes:
-#  db-data:
-#secrets:
-#  db-password:
-#    file: db/password.txt
+      - "3005:3000"

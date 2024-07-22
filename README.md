@@ -3,8 +3,6 @@
 
 This project is a Helpdesk Ticketing System built with a microservices architecture and role-based access control (RBAC).
 
-- Each microservice is built using Node.js and Express, with Babel for ES6 support.
-
 ## User Roles
 
 - **Admin**: Manage users, view all tickets, configure system settings.
@@ -27,50 +25,40 @@ helpdesk-microservice-rbac/
 ├── docker-compose.yml
 ├── README.md
 ├── auth-service/
-│ ├── .babelrc
-│ ├── .dockerignore
-│ ├── Dockerfile
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── src/
+│ ├── dist/
 │ │ └── index.js
-│ └── tests/
+│ ├── src/
+│ │ └── index.ts
+│ ├── package.json
+│ ├── tsconfig.json
 ├── ticket-service/
-│ ├── .babelrc
-│ ├── .dockerignore
-│ ├── Dockerfile
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── src/
+│ ├── dist/
 │ │ └── index.js
-│ └── tests/
+│ ├── src/
+│ │ └── index.ts
+│ ├── package.json
+│ ├── tsconfig.json
 ├── user-service/
-│ ├── .babelrc
-│ ├── .dockerignore
-│ ├── Dockerfile
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── src/
+│ ├── dist/
 │ │ └── index.js
-│ └── tests/
+│ ├── src/
+│ │ └── index.ts
+│ ├── package.json
+│ ├── tsconfig.json
 ├── notification-service/
-│ ├── .babelrc
-│ ├── .dockerignore
-│ ├── Dockerfile
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── src/
+│ ├── dist/
 │ │ └── index.js
-│ └── tests/
+│ ├── src/
+│ │ └── index.ts
+│ ├── package.json
+│ ├── tsconfig.json
 ├── reporting-service/
-│ ├── .babelrc
-│ ├── .dockerignore
-│ ├── Dockerfile
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── src/
+│ ├── dist/
 │ │ └── index.js
-│ └── tests/
+│ ├── src/
+│ │ └── index.ts
+│ ├── package.json
+│ ├── tsconfig.json
 ```
 
 ## Getting Started
