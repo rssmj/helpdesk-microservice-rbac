@@ -9,7 +9,7 @@ This project is a Helpdesk Ticketing System built with a microservices architect
 - **Support Agent**: Manage assigned tickets, respond to tickets.
 - **Customer**: Create and view own tickets, add comments.
 
-## Services
+## Microservices
 
 - **Authentication Service**: Handle user registration, login, and role management.
 - **Ticket Management Service**: Create, update, and track the status of tickets.
@@ -20,45 +20,74 @@ This project is a Helpdesk Ticketing System built with a microservices architect
 ## Project Structure
 
 helpdesk-microservice-rbac/
+├── config/
+├── scripts/
+├── src/
+│ ├── auth-service/
+│ │ ├── dist/
+│ │ ├── node_modules/
+│ │ ├── src/
+│ │ │ └── index.ts
+│ │ ├── tests/
+│ │ ├── .dockerignore
+│ │ ├── .gitignore
+│ │ ├── Dockerfile
+│ │ ├── package-lock.json
+│ │ ├── package.json
+│ │ └── tsconfig.json
+│ ├── notification-service/
+│ │ ├── dist/
+│ │ ├── node_modules/
+│ │ ├── src/
+│ │ │ └── index.ts
+│ │ ├── tests/
+│ │ ├── .dockerignore
+│ │ ├── .gitignore
+│ │ ├── Dockerfile
+│ │ ├── package-lock.json
+│ │ ├── package.json
+│ │ └── tsconfig.json
+│ ├── reporting-service/
+│ │ ├── dist/
+│ │ ├── node_modules/
+│ │ ├── src/
+│ │ │ └── index.ts
+│ │ ├── tests/
+│ │ ├── .dockerignore
+│ │ ├── .gitignore
+│ │ ├── Dockerfile
+│ │ ├── package-lock.json
+│ │ ├── package.json
+│ │ └── tsconfig.json
+│ ├── ticket-service/
+│ │ ├── dist/
+│ │ ├── node_modules/
+│ │ ├── src/
+│ │ │ └── index.ts
+│ │ ├── tests/
+│ │ ├── .dockerignore
+│ │ ├── .gitignore
+│ │ ├── Dockerfile
+│ │ ├── package-lock.json
+│ │ ├── package.json
+│ │ └── tsconfig.json
+│ ├── user-service/
+│ │ ├── dist/
+│ │ ├── node_modules/
+│ │ ├── src/
+│ │ │ └── index.ts
+│ │ ├── tests/
+│ │ ├── .dockerignore
+│ │ ├── .gitignore
+│ │ ├── Dockerfile
+│ │ ├── package-lock.json
+│ │ ├── package.json
+│ │ └── tsconfig.json
 ├── .dockerignore
 ├── .gitignore
 ├── docker-compose.yml
-├── README.md
-├── auth-service/
-│ ├── dist/
-│ │ └── index.js
-│ ├── src/
-│ │ └── index.ts
-│ ├── package.json
-│ ├── tsconfig.json
-├── ticket-service/
-│ ├── dist/
-│ │ └── index.js
-│ ├── src/
-│ │ └── index.ts
-│ ├── package.json
-│ ├── tsconfig.json
-├── user-service/
-│ ├── dist/
-│ │ └── index.js
-│ ├── src/
-│ │ └── index.ts
-│ ├── package.json
-│ ├── tsconfig.json
-├── notification-service/
-│ ├── dist/
-│ │ └── index.js
-│ ├── src/
-│ │ └── index.ts
-│ ├── package.json
-│ ├── tsconfig.json
-├── reporting-service/
-│ ├── dist/
-│ │ └── index.js
-│ ├── src/
-│ │ └── index.ts
-│ ├── package.json
-│ ├── tsconfig.json
+├── LICENSE
+└── README.md
 ```
 
 ## Getting Started
