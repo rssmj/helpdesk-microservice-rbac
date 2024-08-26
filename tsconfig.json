@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "types": ["node", "express", "amqplib"],
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "@common/*": ["./libs/common/src/*"]
+    }
+  },
+  "include": ["apps/**/*", "libs/**/*"],
+  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts"]
+}

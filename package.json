@@ -1,0 +1,25 @@
+{
+  "name": "helpdesk-microservice-rbac",
+  "version": "1.0.0",
+  "repository": "https://github.com/rssmj/helpdesk-microservice-rbac.git",
+  "author": "rssmj <58471626+rssmj@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.0",
+    "lerna": "^6.4.1",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.4"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "clean": "lerna run clean"
+  }
+}
