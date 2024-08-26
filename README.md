@@ -20,73 +20,73 @@ This project is a Helpdesk Ticketing System built with a microservices architect
 ## Project Structure
 
 helpdesk-microservice-rbac/
-├── config/
-├── scripts/
-├── src/
+│
+├── apps/
 │ ├── auth-service/
-│ │ ├── dist/
-│ │ ├── node_modules/
 │ │ ├── src/
 │ │ │ └── index.ts
 │ │ ├── tests/
 │ │ ├── .dockerignore
 │ │ ├── .gitignore
-│ │ ├── Dockerfile
-│ │ ├── package-lock.json
+│ │ ├── dockerfile
 │ │ ├── package.json
-│ │ └── tsconfig.json
+│ │ └── tsconfig.app.json
 │ ├── notification-service/
-│ │ ├── dist/
-│ │ ├── node_modules/
 │ │ ├── src/
 │ │ │ └── index.ts
 │ │ ├── tests/
 │ │ ├── .dockerignore
 │ │ ├── .gitignore
-│ │ ├── Dockerfile
-│ │ ├── package-lock.json
+│ │ ├── dockerfile
 │ │ ├── package.json
-│ │ └── tsconfig.json
+│ │ └── tsconfig.app.json
 │ ├── reporting-service/
-│ │ ├── dist/
-│ │ ├── node_modules/
 │ │ ├── src/
 │ │ │ └── index.ts
 │ │ ├── tests/
 │ │ ├── .dockerignore
 │ │ ├── .gitignore
-│ │ ├── Dockerfile
-│ │ ├── package-lock.json
+│ │ ├── dockerfile
 │ │ ├── package.json
-│ │ └── tsconfig.json
+│ │ └── tsconfig.app.json
 │ ├── ticket-service/
-│ │ ├── dist/
-│ │ ├── node_modules/
 │ │ ├── src/
 │ │ │ └── index.ts
 │ │ ├── tests/
 │ │ ├── .dockerignore
 │ │ ├── .gitignore
-│ │ ├── Dockerfile
-│ │ ├── package-lock.json
+│ │ ├── dockerfile
 │ │ ├── package.json
-│ │ └── tsconfig.json
-│ ├── user-service/
-│ │ ├── dist/
-│ │ ├── node_modules/
-│ │ ├── src/
-│ │ │ └── index.ts
-│ │ ├── tests/
-│ │ ├── .dockerignore
-│ │ ├── .gitignore
-│ │ ├── Dockerfile
-│ │ ├── package-lock.json
-│ │ ├── package.json
-│ │ └── tsconfig.json
+│ │ └── tsconfig.app.json
+│ └── user-service/
+│ ├── src/
+│ │ └── index.ts
+│ ├── tests/
+│ ├── .dockerignore
+│ ├── .gitignore
+│ ├── dockerfile
+│ ├── package.json
+│ └── tsconfig.app.json
+│
+├── libs/
+│ └── common/
+│ ├── src/
+│ │ └── rmq/
+│ │ └── rabbitmq.ts
+│ ├── tsconfig.lib.json
+│
+├── dist/
+│ ├── apps/
+│ └── libs/
+│
 ├── .dockerignore
 ├── .gitignore
 ├── docker-compose.yml
+├── lerna.json
 ├── LICENSE
+├── package.json
+├── tsconfig.build.json
+├── yarn.lock
 └── README.md
 ```
 
@@ -106,7 +106,13 @@ git clone https://github.com/rssmj/helpdesk-microservice-rbac.git
 cd helpdesk-microservice-rbac
 ```
 
-2. Build and start the services using Docker Compose:
+2. Install dependencies:
+
+```sh
+yarn install
+```
+
+3. Build and start the services using Docker Compose:
 
 ```sh
 docker-compose up --build
@@ -124,11 +130,10 @@ Each service will be available on the following ports:
 
 ### Development
 
-To develop and test individual services, navigate to the service directory and use npm scripts:
+To develop and test individual services, you can use Yarn to manage the workspaces. Run the following from the project root:
 
 ```sh
-cd auth-service
-npm start
+yarn workspace auth-service start
 ```
 
 Repeat for other services.
