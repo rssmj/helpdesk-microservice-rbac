@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/apps/ticket-service",
+    "rootDir": "./src",
+    "types": ["node", "express", "amqplib"],
+    "typeRoots": ["../../node_modules/@types"],
+    "paths": {
+      "@common/*": ["../../libs/common/src/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "test", "**/*.spec.ts"]
+}

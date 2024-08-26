@@ -1,21 +1,98 @@
 services:
   auth-service:
-    build: ./src/auth-service
+    build:
+      context: .
+      dockerfile: ./apps/auth-service/Dockerfile
     ports:
-      - "3001:3001"
+      - "3001:3000"
+    environment:
+      - PORT=3000
+    # volumes:
+    # - ./apps/auth-service:/usr/src/app
+    # - /usr/src/app/node_modules
+
   ticket-service:
-    build: ./src/ticket-service
+    build:
+      context: .
+      dockerfile: ./apps/ticket-service/Dockerfile
     ports:
-      - "3002:3002"
+      - "3002:3000"
+    environment:
+      - PORT=3000
+    # volumes:
+    # - ./apps/ticket-service:/usr/src/app
+    # - /usr/src/app/node_modules
+
   user-service:
-    build: ./src/user-service
+    build:
+      context: .
+      dockerfile: ./apps/user-service/Dockerfile
     ports:
-      - "3003:3003"
+      - "3003:3000"
+    environment:
+      - PORT=3000
+    # volumes:
+    # - ./apps/user-service:/usr/src/app
+    # - /usr/src/app/node_modules
+
   notification-service:
-    build: ./src/notification-service
+    build:
+      context: .
+      dockerfile: ./apps/notification-service/Dockerfile
     ports:
-      - "3004:3004"
+      - "3004:3000"
+    environment:
+      - PORT=3000
+    # volumes:
+    # - ./apps/notification-service:/usr/src/app
+    # - /usr/src/app/node_modules
+
   reporting-service:
-    build: ./src/reporting-service
+    build:
+      context: .
+      dockerfile: ./apps/reporting-service/Dockerfile
     ports:
-      - "3005:3005"
+      - "3005:3000"
+    environment:
+      - PORT=3000
+    # volumes:
+    # - ./apps/reporting-service:/usr/src/app
+    # - /usr/src/app/node_modules
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_SERVER: mongodb
+
+  seq:
+    image: datalust/seq
+    ports:
+      - "5341:80"
+    environment:
+      ACCEPT_EULA: Y
+    volumes:
+      - seq-data:/data
+
+volumes:
+  seq-data:
