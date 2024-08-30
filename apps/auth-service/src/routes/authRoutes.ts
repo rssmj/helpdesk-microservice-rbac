@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/user'; // Ensure this path is correct
+import User from '../models/User';
 
 const router = Router();
 
@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({ msg: 'User registered' });
   } catch (err: any) {
-    console.error(err.message);
+    console.error('Registration Error:', err.message);
     res.status(500).send('Server error');
   }
 });
@@ -50,26 +50,26 @@ router.post('/login', async (req, res) => {
     }
 
     if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET is not defined');
       return res.status(500).json({ msg: 'JWT_SECRET is not defined' });
     }
 
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
+    const payload = { user: { id: user.id } };
 
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
       { expiresIn: '1h' },
       (err, token) => {
-        if (err) throw err;
+        if (err) {
+          console.error('JWT Sign Error:', err);
+          return res.status(500).send('Server error');
+        }
         res.json({ token });
       }
     );
   } catch (err: any) {
-    console.error(err.message);
+    console.error('Login Error:', err.message);
     res.status(500).send('Server error');
   }
 });

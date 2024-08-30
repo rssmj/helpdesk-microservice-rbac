@@ -12,6 +12,7 @@ export const connectRabbitMQ = async () => {
     console.log('Connected to RabbitMQ');
   } catch (error) {
     console.error('Failed to connect to RabbitMQ', error);
+    process.exit(1); // Consider exiting if RabbitMQ is essential
   }
 };
 

@@ -2,6 +2,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
+import checkRole from './middleware/checkRole';
+import authenticateToken from './middleware/authenticateToken';
 import {
   connectRabbitMQ,
   sendMessage,
@@ -25,15 +27,16 @@ mongoose
   })
   .catch((err) => {
     console.error('Failed to connect to MongoDB', err);
+    process.exit(1); // Exit if MongoDB connection fails
   });
-
-// Use auth routes
-app.use('/api/auth', authRoutes);
 
 // Connect to RabbitMQ
 connectRabbitMQ()
   .then(() => {
     console.log('Connected to RabbitMQ in auth-service');
+
+    // Use auth routes after RabbitMQ is connected
+    app.use('/api/auth', authRoutes);
 
     // Send a message
     app.post('/send', (req: Request, res: Response) => {
@@ -56,6 +59,16 @@ connectRabbitMQ()
 app.get('/', (req: Request, res: Response) => {
   res.send('api up: auth-service');
 });
+
+// Protect a route with RBAC
+app.get(
+  '/admin',
+  authenticateToken,
+  checkRole(['admin']),
+  (req: Request, res: Response) => {
+    res.send('Welcome, admin!');
+  }
+);
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
