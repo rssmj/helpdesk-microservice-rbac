@@ -3,7 +3,6 @@
   "compilerOptions": {
     "declaration": true,
     "outDir": "../../dist/libs/common",
-    "types": ["node", "express", "amqplib"],
     "typeRoots": ["../../node_modules/@types"],
     "esModuleInterop": true,
     "skipLibCheck": true

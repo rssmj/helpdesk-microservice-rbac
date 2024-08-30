@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "types": ["node", "express", "amqplib"],
+    "types": ["node", "express", "amqplib", "bcryptjs", "jsonwebtoken"],
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@common/*": ["./libs/common/src/*"]
