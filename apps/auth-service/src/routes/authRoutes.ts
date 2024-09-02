@@ -6,7 +6,7 @@ import User from '../models/User';
 const router = Router();
 
 router.post('/register', async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, roles } = req.body;
 
   // Validate password
   if (password.length < 6) {
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ msg: 'User already exists' });
     }
 
-    user = new User({ username, password });
+    user = new User({ username, password, roles });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
       return res.status(500).json({ msg: 'JWT_SECRET is not defined' });
     }
 
-    const payload = { user: { id: user.id } };
+    const payload = { user: { id: user.id, roles: user.roles } };
 
     jwt.sign(
       payload,
