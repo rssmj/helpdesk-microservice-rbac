@@ -1,0 +1,22 @@
+{
+  "roles": [
+    {
+      "name": "admin",
+      "permissions": [
+        "create_ticket",
+        "read_ticket",
+        "update_ticket",
+        "delete_ticket",
+        "manage_users"
+      ]
+    },
+    {
+      "name": "agent",
+      "permissions": ["create_ticket", "read_ticket", "update_ticket"]
+    },
+    {
+      "name": "user",
+      "permissions": ["create_ticket", "read_ticket"]
+    }
+  ]
+}

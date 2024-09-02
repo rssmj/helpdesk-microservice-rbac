@@ -1,14 +1,28 @@
-// import mongoose, { Schema, Document } from 'mongoose';
+import roles from '../config/roles.json';
 
-// interface IRole extends Document {
-//   name: string;
-//   permissions: string[];
-// }
+// Define an interface for the role data structure
+interface RoleInterface {
+  name: string;
+  permissions: string[];
+}
 
-// const RoleSchema: Schema = new Schema({
-//   name: { type: String, required: true, unique: true },
-//   permissions: { type: [String], required: true },
-// });
+class Role {
+  private roles: RoleInterface[];
 
-// const Role = mongoose.model<IRole>('Role', RoleSchema);
-// export default Role;
+  constructor() {
+    // Load the roles from the JSON file
+    this.roles = roles.roles;
+  }
+
+  // Method to get a role by its name
+  getRoleByName(name: string): RoleInterface | undefined {
+    return this.roles.find((role) => role.name === name);
+  }
+
+  // Method to get all roles
+  getRoles(): RoleInterface[] {
+    return this.roles;
+  }
+}
+
+export default Role;
