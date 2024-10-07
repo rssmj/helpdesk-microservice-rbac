@@ -1,7 +1,7 @@
 import amqplib from 'amqplib';
 
 const RABBITMQ_URL =
-  process.env.RABBITMQ_URL || 'amqp://user:password@localhost:5672';
+  process.env.RABBITMQ_URL || 'amqp://user:password@rabbitmq:5672';
 
 let channel: amqplib.Channel;
 
@@ -12,6 +12,7 @@ export const connectRabbitMQ = async () => {
     console.log('Connected to RabbitMQ');
   } catch (error) {
     console.error('Failed to connect to RabbitMQ', error);
+    process.exit(1); // Consider exiting if RabbitMQ is essential
   }
 };
 

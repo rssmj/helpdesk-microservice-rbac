@@ -3,7 +3,15 @@
   "compilerOptions": {
     "outDir": "../../dist/apps/notification-service",
     "rootDir": "./src",
-    "types": ["node", "express", "amqplib"],
+    "types": [
+      "node",
+      "express",
+      "amqplib",
+      "mongoose",
+      "dotenv",
+      "bcryptjs",
+      "jsonwebtoken"
+    ],
     "typeRoots": ["../../node_modules/@types"],
     "paths": {
       "@common/*": ["../../libs/common/src/*"]
